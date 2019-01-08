@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Questrial');
+
+body {
+  background-color: #b3d690;
+  font-family: "Questrial", sans serif;
+}
+
+#title {
+  text-align: center;
+}
+
+#main {
+  width: 80%;
+  max-width: 900px;
+  background-color: #f6f7f4;
+  margin: 0 auto;
+  border-radius: 0.3em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+form {
+  display: block;
+}
+
+#survey-form {
+  display: block;
+}
+
+#description {
+  text-align: center;
+}
+
+.row {
+  margin: 1em;
+  text-align: center;
+}
+
+.label {
+  display: inline-block;
+  text-align: right;
+  width: 40%;
+  vertical-align: top;
+  margin-top: 10px;
+}
+
+.rightTab {
+  display: inline-block;
+  text-align: left;
+  width: 45%;
+  margin-left: 1em;
+  vertical-align: middle;
+}
+
+.input-field {
+  height: 20px;
+}
+
+.comments-input {
+  height: 50px;
+}
+
+.input-field, .comments-input {
+  width: 250px;
+  padding: 5px;
+  margin: 10px;
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+}
+
+.dropdown {
+  width: 100px;
+  padding: 5px;
+  margin: 10px;
+  height: 35px;
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+}
+
+ul {
+  list-style: none;
+  margin-top: 0.3em;
+  padding-left: 0px;
+  padding: 5px;
+}
+
+button {
+  height: 40px;
+  width: 100px;
+  color: #fff;
+  font-size: 1.02em;
+  background-color: #8bbd5a;
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+}
+
+button:hover {
+  background-color: #3f5428;
+}
+
+@media screen and (max-width: 521px) {
+  .label {
+    width: 100%;
+    text-align: left;
+  }
+  
+  .rightTab {
+    width: 80%;
+    float: left;
+    margin-left: 0;
+  }
+  
+  .input-field, .comments-input {
+    width: 100%;
+    margin: 10px;
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width: 833px) {
+  .input-field, .comments-input {
+      width: 80%;
+}
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Survey Form!
+    </title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  
+  <body>
+    <h1 id="title">
+      Survey Form
+    </h1>
+    
+    <div id="main">
+      <p id="description">
+        Let us know how we can improve.
+      </p>
+
+      <form id="survey-form">
+        <!-- Row for name -->
+        <div class="row">
+          <div class="label">
+            <label id="name-label" for="name" class="label">
+              Plaza Name*:
+            </label>
+          </div>
+          <div class="rightTab">
+            <input type="text" id="name" placeholder="Enter your name" class="input-field" required>
+        </input>
+          </div>
+        </div>
+      
+        <!-- Row for email -->
+        <div class="row">
+          <div class="label">
+            <label id="email-label" for="email">Email*:
+            </label>
+          </div>
+          <div class="rightTab">
+            <input id="email" type="text" name="email" placeholder="Enter your email" class="input-field" required>
+          </div>
+        </div>
+      
+        <!-- Row for age -->
+        <div class="row">
+          <div class="label">
+            <label id="number-label" for="number">Age*:
+            </label>
+          </div>
+          <div class="rightTab">
+            <input id="number" type="number" name="number" placeholder="Age" min="1" max="100" class="input-field" required>
+          </div>
+        </div>
+      
+        <!-- Row for membership duration -->
+        <div class="row">
+          <div class="label">
+            <label id="membership-label" for="membership-duration">How long have you been a member? 
+            </label>
+          </div>
+          <div class="rightTab">
+            <select id="membership-duration" name="membership-duration" class="dropdown">
+              <option value="0-1 years">0-1 years</option>
+              <option value="2-4 years">2-4 years</option>
+              <option value="5-9 years">5-9 years</option>
+              <option value="10+ years">10+ years</option>
+            </select>
+        </div>
+      </form>
+    </div>
+    
+        <!-- Row for region -->
+        <div class="row">
+          <div class="label">
+            <label id="region-label" for="region">Of which region were you a member?
+            </label>
+          </div>
+          <div class="rightTab">
+            <ul>
+              <li>
+                <label for="Eriador"><input id="Eriador" type="radio" name="region">Eriador</label>
+              </li>
+              <li>
+                <label for="Wilderland"><input id="Wilderland" type="radio" name="region">Wilderland</label>
+              </li>
+              <li>
+                <label for="Western-Mountains"><input id="Western-Mountains" type="radio" name="region">Western Mountains</label>
+              </li>
+              <li>
+                <label for="Shadowed-Lands"><input id="Shadowed-Lands" type="radio" name="region">Shadowed Lands</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+        
+        <!-- Row for activities -->
+        <div class="row">
+          <div class="label">
+            <label id="activities-label" for="activities">What were your favorite activities on the Plaza?</label>
+          </div>
+          <div class="rightTab">
+            <ul>
+              <li>
+                <label for="Lore"><input id="Lore" type="checkbox" name="activities">Lore + Discussion
+                </label>
+              </li>
+              <li>
+                <label for="RPGs"><input id="RGPs" type="checkbox" name="activities">RPGs + Games
+                </label>
+              </li>
+              <li>
+                <label for="Cottage"><input id="Cottage" type="checkbox" name="activities">Cottage of Lost Play
+                </label>
+              </li>
+              <li>
+                <label for="Community"><input id="Community" type="checkbox" name="activities">Community
+                </label>
+              </li>
+              <li>
+                <label for="Other"><input id="Other" type="checkbox" name="activities">Other
+                </label>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Row for comments -->
+        <div class="row">
+          <div class="label">
+            <label id="comments-label" for="comments">
+              Please share any comments regarding what you'd like to see on the new site.
+            </label>
+          </div>
+          <div class="rightTab">
+            <textarea id="comments" class="comments-input" placeholder="Write your comment here">
+            </textarea>
+          </div>
+        </div>
+    
+        <!-- Row for submit button -->  
+        <div class="row">
+          <button type="Submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

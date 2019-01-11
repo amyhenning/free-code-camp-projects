@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Technical Documentation</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  
+  <body>
+    <nav id="navbar">
+      <header>
+        Basic Ruby Styles
+      </header>
+      
+      <ul>
+        <li>
+          <a href="#Introduction" class="nav-link" alt="Introduction" accesskey="i">Introduction</a>
+        </li>
+        
+        <li>
+          <a href="#Source_Code_Layout" class="nav-link" alt="Source Code Layout" accesskey="c">Source Code Layout</a>
+        </li>
+        
+        <li>
+          <a href="#Naming" class="nav-link" alt="Naming" accesskey="n">Naming</a>
+        </li>
+        
+        <li>
+          <a href="#Comments" class="nav-link" alt="Comments" accesskey="o">Comments</a>
+        </li>
+        
+        <li>
+          <a href="#Classes_and_Modules" class="nav-link" alt="Classes and Modules" accesskey="m">Classes and Modules</a>
+        </li>
+        
+        <li>
+          <a href="#Tools" class="nav-link">Tools</a>
+        </li>
+      </ul>
+    </nav>
+    
+    <main id="main-doc">
+      
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        
+        <article>
+          <p>
+            This is a simplified guide for basic Ruby code styles. All content is from the <a href="https://github.com/rubocop-hq/ruby-style-guide" target="_blank" alt="RuboCop style guide" accesskey="r">RuboCop Ruby Style Guide</a>.
+          </p>
+        </article>
+      </section>
+      
+      <section class="main-section" id="Source_Code_Layout">
+        <header>Source Code Layout</header>
+        
+        <article>
+          <p>Use two spaces per indentation level (aka soft tabs). No hard tabs.
+          </p>
+          
+          <code>
+            # bad - four spaces<br>
+            def some_method<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;do_something<br>
+            end<br><br>
+
+            # good<br>
+            def some_method<br>
+            &nbsp;&nbsp;do_something<br>
+            end
+          </code>
+          
+          <p>
+            Avoid single-line methods. Although they are somewhat popular in the wild, there are a few peculiarities about their definition syntax that make their use undesirable. At any rate—there should be no more than one expression in a single-line method.
+          </p>
+          <code>
+            # bad<br>
+            def too_much; something; something_else; end<br><br>
+
+            # good<br>
+            def some_method<br>
+            &nbsp;&nbsp;body<br>
+            end
+          </code>
+          
+          <p>
+            Use spaces around operators, after commas, colons and semicolons. Whitespace might be (mostly) irrelevant to the Ruby interpreter, but its proper use is the key to writing easily readable code. There are a few exceptions to this:
+          </p>
+          
+          <ul>
+            <li>The exponent operator</li>
+            <li>The slash in rational literals</li>
+            <li>The safe navigation operator</li>
+          </ul>
+          
+          <p>See the <a href="https://github.com/rubocop-hq/ruby-style-guide#source-code-layout" target="_blank" alt="RuboCop Style Guide" accesskey="s">RuboCop Ruby Style Guide</a> for more on these exceptions.</p>
+          
+          <code>
+            sum = 1 + 2<br>
+            a, b = 1, 2<br>
+            class FooError < StandardError; end
+          </code>
+            
+          <p>No spaces after (, [ or before ], ). Use spaces around { and before }</p>
+
+          <code>
+            # bad<br>
+            some( arg ).other<br>
+            [ 1, 2, 3 ].each{|e| puts e}<br><br>
+
+            # good<br>
+            some(arg).other<br>
+            [1, 2, 3].each { |e| puts e }
+          </code>
+          
+          <p>
+            Use empty lines between method definitions and also to break up methods into logical paragraphs internally.
+          </p>
+            
+          <code>
+            def some_method<br>
+            &nbsp;&nbsp;data = initialize(options)<br><br>
+
+            &nbsp;&nbsp;data.manipulate!<br><br>
+
+            &nbsp;&nbsp;data.result<br>
+            end<br><br>
+
+            def some_method<br>
+            &nbsp;&nbsp;result<br>
+            end
+          </code>
+            
+          <p>
+            Don't use empty lines around method, class, module, block bodies.
+          </p>
+          <code>
+            # bad<br>
+            class Foo<br><br>
+
+            &nbsp;&nbsp;def foo<br><br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;begin<br><br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do_something do<br><br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;something<br><br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br><br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;rescue<br><br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;something<br><br>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;end<br><br>
+
+            &nbsp;&nbsp;end<br><br>
+
+            end<br><br>
+
+            # good<br>
+            class Foo<br>
+            &nbsp;&nbsp;def foo<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;begin<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;do_something do<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;something<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;rescue<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;something<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;end<br>
+            &nbsp;&nbsp;end<br>
+            end
+          </code>
+        </article>
+      </section>
+      
+      <section class="main-section" id="Naming">
+        <header>Naming</header>
+        
+        <article>
+          <p>
+            Name identifiers in English.
+          </p>
+          <code>
+            # bad - identifier using non-ascii characters
+            <br>
+            заплата = 1_000
+            <br>
+            # bad - identifier is a Bulgarian word
+            <br>
+            zaplata = 1_000
+            <br><br>
+            # good
+            <br>
+            salary = 1_000
+          </code>
+          
+          <p>Use <span class="code-font">snake_case</span> for symbols, methods and variables. Use snake_case for the following additional scenarios:</p>
+          <ul>
+            <li>Naming files, e.g. <span class="code-font">hello_world.rb</span></li>
+
+            <li>Naming directories, e.g. <span class="code-font">lib/hello_world/hello_world.rb</span></li>
+          </ul>
+          <code>
+            # bad
+            <br>
+            :'some symbol'
+            <br>
+            :SomeSymbol
+            <br>
+            :someSymbol
+            <br><br>
+            someVar = 5
+            <br><br>
+            def someMethod
+            <br>
+            &nbsp;&nbsp;# some code
+            <br>
+            end
+            <br><br>
+            def SomeMethod
+            <br>
+            &nbsp;&nbsp;# some code
+            <br>
+            end
+            <br><br>
+            # good
+            <br>:some_symbol
+            <br><br>
+            some_var = 5
+            <br><br>
+            def some_method
+            <br>
+            &nbsp;&nbsp;# some code
+            <br>
+            end
+          </code>
+          
+          <p>Use CamelCase for classes and modules. (Keep acronyms like HTTP, RFC, XML uppercase.)</p>
+          <code>
+            # bad
+            <br>
+            class Someclass
+            <br>
+            &nbsp;&nbsp;# some code
+            <br>
+            end
+            <br><br>
+            class Some_Class
+            <br>
+            &nbsp;&nbsp;# some code
+            <br>end
+            <br><br>
+            class SomeXml
+            <br>
+            &nbsp;&nbsp;# some code
+            <br>
+            end
+            <br><br>
+            class XmlSomething
+            <br>
+            &nbsp;&nbsp;# some code
+            <br>end
+            <br><br>
+            # good
+            <br>
+            class SomeClass
+            <br>
+            &nbsp;&nbsp;# some code
+            <br>
+            end
+            <br><br>
+            class SomeXML
+            <br>
+            &nbsp;&nbsp;# some code
+            <br>end
+            <br><br>
+            class XMLSomething
+            <br>
+            &nbsp;&nbsp;# some code
+            <br>end
+          </code>
+        </article>
+      </section>
+      
+      <section class="main-section" id="Comments">
+        <header>Comments</header>
+        <p>Write self-documenting code and ignore the rest of this section. Seriously! Some general notes appear below:</p>
+
+        <ul>
+          <li>Write comments in English.</li>
+          <li>Use one space between the leading # character of the comment and the text of the comment.</li>
+          <li>Comments longer than a word are capitalized and use punctuation. Use one space after periods.</li>
+        </ul>
+
+        <p>Avoid superfluous comments.</p>
+        <code>
+          # bad
+          <br>
+          counter += 1 # Increments counter by one.
+        </code>
+      </section>
+      
+      <section class="main-section" id="Classes_and_Modules">
+        <header>Classes and Modules</header>
+        
+        <p>Use a consistent structure in your class definitions.</p>
+        <code>
+          class Person
+          <br>
+            &nbsp;&nbsp;# extend and include go first<br>
+            &nbsp;&nbsp;extend SomeModule<br>
+            &nbsp;&nbsp;include AnotherModule<br>
+            <br>
+            &nbsp;&nbsp;# inner classes<br>
+            &nbsp;&nbsp;CustomError = Class.new(StandardError)<br>
+<br>
+            &nbsp;&nbsp;# constants are next<br>
+            &nbsp;&nbsp;SOME_CONSTANT = 20<br>
+<br>
+            &nbsp;&nbsp;# afterwards we have attribute macros<br>
+            &nbsp;&nbsp;attr_reader :name<br>
+<br>
+            &nbsp;&nbsp;# followed by other macros (if any)<br>
+            &nbsp;&nbsp;validates :name<br>
+<br>
+            &nbsp;&nbsp;# public class methods are next in line<br>
+            &nbsp;&nbsp;def self.some_method<br>
+            &nbsp;&nbsp;end<br>
+<br>
+            &nbsp;&nbsp;# initialization goes between class methods and other instance methods<br>
+            &nbsp;&nbsp;def initialize<br>
+            &nbsp;&nbsp;end<br>
+<br>
+            &nbsp;&nbsp;# followed by other public instance methods<br>
+            &nbsp;&nbsp;def some_method<br>
+            &nbsp;&nbsp;end<br>
+<br>
+            &nbsp;&nbsp;# protected and private methods are grouped near the end<br>
+            &nbsp;&nbsp;protected<br>
+<br>
+            &nbsp;&nbsp;def some_protected_method<br>
+            &nbsp;&nbsp;end<br>
+<br>
+            &nbsp;&nbsp;private<br>
+<br>
+            &nbsp;&nbsp;def some_private_method<br>
+            &nbsp;&nbsp;end<br>
+          end
+        </code>
+        
+        <p>Split multiple mixins into separate statements.</p>
+        <code>
+          # bad<br>
+          class Person<br>
+          &nbsp;&nbsp;include Foo, Bar<br>
+          end<br><br>
+
+          # good<br>
+          class Person<br>
+          &nbsp;&nbsp;# multiple mixins go in separate statements<br>
+          &nbsp;&nbsp;include Foo<br>
+          &nbsp;&nbsp;include Bar<br>
+          end<br>
+        </code>
+        
+        <p>Prefer modules to classes with only class methods. Classes should be used only when it makes sense to create instances out of them.</p>
+        <code>
+          # bad<br>
+          class SomeClass<br>
+          &nbsp;&nbsp;def self.some_method<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;# body omitted<br>
+          &nbsp;&nbsp;defend<br><br>
+
+          &nbsp;&nbsp;def self.some_other_method<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;# body omitted<br>
+          &nbsp;&nbsp;end<br>
+          end<br><br>
+
+          # good<br>
+          module SomeModule<br>
+          &nbsp;&nbsp;module_function<br><br>
+
+          &nbsp;&nbsp;def some_method<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;# body omitted<br>
+          &nbsp;&nbsp;end<br><br>
+
+          &nbsp;&nbsp;def some_other_method<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;# body omitted<br>
+          &nbsp;&nbsp;end<br>
+          end
+        </code>
+      </section>
+      
+      <section class="main-section" id="Tools">
+        <header>Tools</header>
+        <p>Access the full <a href="https://github.com/rubocop-hq/ruby-style-guide" target="_blank">Ruby Style Guide</a>.</p>
+
+        <p>Below are some tools to help you automatically check Ruby code against this guide.
+        </p>
+        <p><a href="https://github.com/rubocop-hq/rubocop" target="_blank">RuboCop</a></p>
+        <ul>
+          <li>
+            RuboCop is a Ruby static code analyzer and formatter, based on this style guide. RuboCop already covers a significant portion of the Guide and plugins for most popular Ruby editors and IDEs.
+          </li>
+        </ul>
+
+        <p><a href="http://www.jetbrains.com/ruby/" target="_blank">RubyMine</a></p>
+        <ul>
+          <li>
+            RubyMine's code inspections are partially based on this guide.
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400|Righteous');
+
+body {
+  background-color: #93efff;
+  color: #4b4d4f;
+  font-family: 'Raleway', sans serif;
+  font-weight: normal;
+  margin: 0;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #ffb293;
+  min-height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+#navbar a {
+  color: #4b4d4f;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#logo {
+  width: 40%;
+  font-family: 'Righteous', sans serif;
+}
+
+#logo h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-left: 1em;
+}
+
+#nav-links {
+  width: 55%;
+  padding: 1em;
+  font-size: 1.2em;
+}
+
+#nav-ul {
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  padding-left: 0;
+  justify-content: flex-end;
+}
+
+.nav-li {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#projects, #skills-tools, #contact {
+  padding: 2em;
+  width: 100%;
+}
+
+#welcome-section {
+  width: 100%;
+  margin-top: 100px;
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: url('oleg-laptev-545277-unsplash.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#welcome-content {
+  background: rgb(75,77,79, 0.3);
+  width: 30%;
+  margin: 0 auto;
+  padding: 1em;
+  overflow: hidden;
+  color: #FFF;
+}
+
+#welcome-content h1 {
+  font-size: 2.5em;
+  margin-top: 0.25em;
+}
+
+#welcome-content h3 {
+  font-size: 1.5em;
+}
+
+#projects {
+  background-color: #93efff;
+}
+
+.project-tile {
+  text-align: center;
+}
+
+.project-img {
+  border: 5px solid #fff;
+  width: 350px;
+  height: auto;
+  -webkit-box-shadow: 5px 5px 8px #4b4d4f;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    5px 5px 8px #4b4d4f;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         5px 5px 8px #c4b4d4fcc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+#skills-tools {
+  background-color: #ffe893;
+
+}
+
+.skills-list {
+  margin: 0 auto;
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.skill {
+  text-align: center;
+/*   width: 100%; */
+  margin: 10px;
+  padding: 10px;
+  background-color: #ffb293;
+  font-weight: bold;
+  border: 1px solid ##ffb293;
+  -webkit-box-shadow: 3px 3px 6px #4b4d4f;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:    3px 3px 6px #4b4d4f;  /* Firefox 3.5 - 3.6 */
+  box-shadow:         3px 3px 6px #c4b4d4fcc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
+}
+
+#contact {
+  text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+  #navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }  
+  
+  #logo {
+    text-align: center;
+  }
+  
+  #logo h1 {
+    margin: 0;
+    margin-top: 0.5em;
+  }
+  
+  #nav-links {
+    padding: 0;
+  }
+  
+  #nav-ul {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    padding-left: 0;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .nav-li {
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+  
+  #welcome-section {
+    margin-top: 179px;
+  }
+}
+
+.fab {
+  font-size: 2em;
+  color: #4b4d4f;
+}
+
+#contact ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+#contact li {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}

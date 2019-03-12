@@ -8,8 +8,6 @@ function palindrome(str) {
   return onlyLetters === onlyLettersReversed ? true : false;
 }
 
-
-
 palindrome("eye");
 palindrome("_eye");
 palindrome("My age is 0, 0 si ega ym.");

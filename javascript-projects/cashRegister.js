@@ -6,8 +6,17 @@
 // Otherwise, return {status: "OPEN", change: [...]}, with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
 
 function checkCashRegister(price, cash, cid) {
+  let result = {status: "", change: []};
   let change = cash - price;
   console.log(change);
+  let totalDrawer = 0;
+  for (let i = 0; i < cid.length; i++) {
+    totalDrawer += cid[i][1]
+  };
+  console.log(totalDrawer);
+  if (change > totalDrawer) {
+    result[status] = "INSUFFICIENT_FUNDS";
+  }
 }
 
 checkCashRegister(19.5, 20, [

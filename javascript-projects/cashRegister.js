@@ -6,17 +6,28 @@
 // Otherwise, return {status: "OPEN", change: [...]}, with the change due in coins and bills, sorted in highest to lowest order, as the value of the change key.
 
 function checkCashRegister(price, cash, cid) {
+  // set placeholder result
   let result = {status: "", change: []};
+  // set change variable - need to change this so it is an array
   let change = cash - price;
   console.log(change);
+  // set total drawer variable and sum all the values in the cid
   let totalDrawer = 0;
   for (let i = 0; i < cid.length; i++) {
     totalDrawer += cid[i][1]
   };
   console.log(totalDrawer);
+  // handle the case if the change value is greater than the totalDrawer value
   if (change > totalDrawer) {
     result[status] = "INSUFFICIENT_FUNDS";
-  }
+    return result;
+  };
+  // handle the case if change is equal to totalDrawer
+  if (change === totalDrawer) {
+    result[status] = "CLOSED";
+    result[change] = cid;
+    return result;
+  };
 }
 
 checkCashRegister(19.5, 20, [

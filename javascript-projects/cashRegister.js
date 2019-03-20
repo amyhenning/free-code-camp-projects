@@ -10,34 +10,31 @@ function checkCashRegister(price, cash, cid) {
   let result = {status: "", change: []};
   
   // set change variable - need to change this so it is an array
-  let change = cash - price;
-  console.log(change);
+  let changeDue = cash - price;
+  console.log("Change due is " + changeDue);
 
   // set total drawer variable and sum all the values in the cid
   let totalDrawer = 0;
   for (let i = 0; i < cid.length; i++) {
     totalDrawer += cid[i][1]
-  };
-  console.log(totalDrawer);
 
-  // handle the case if the change value is greater than the totalDrawer value
-  if (change > totalDrawer) {
+  };
+  console.log("Cash available is " + totalDrawer);
+
+  if (changeDue > totalDrawer) {
     result[status] = "INSUFFICIENT_FUNDS";
+    console.log(result[status]);
     return result;
-  };
-
-  // handle the case if change is equal to totalDrawer
-  if (change === totalDrawer) {
+  } else if (changeDue === totalDrawer) {
     result[status] = "CLOSED";
     result[change] = cid;
     return result;
-  };
-
-  if (change < totalDrawer) {
+  } else if (changeDue < totalDrawer) {
     result[status] = "OPEN";
     // figure out a way to subtract the right amount from the right kind of currency
     // result[change] = ;
-  }
+    return result;
+  };
 }
 
 checkCashRegister(19.5, 20, [
